@@ -1,0 +1,197 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	/*const int size = 10;
+	int arr[size];
+	for (int i = 0; i < size; i++)
+	{
+ 
+		arr[i] = rand()%100+ 1;
+		cout << arr[i] << " ";
+	}*/
+ 
+ 
+	/*cout << "----------------- Two demention array ------------- " << endl;*/
+	/*const int rows = 4;
+	const int cols = 3;
+	int array[rows][cols]{};
+	int countnot_nall=0;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			array[i][j] = rand() % 5 + 1;
+			cout << array[i][j] << " ";
+			if (array[i][j] !=0)
+			{
+				countnot_nall++;
+			}
+ 
+		}
+		cout << endl;
+	}
+	cout << "\nnumber of non-zero elements : " << countnot_nall << endl*/
+ 
+	/* const int rows = 3;
+	const int cols = 3;
+	int array[rows][cols]{};
+	int countnull = 0;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			array[i][j] = rand() % 6;
+			cout << array[i][j] << " ";
+			if (array[i][j] == 0)
+			{
+				countnull++;
+			}
+ 
+		}
+		cout << endl;
+	}
+	cout << "\nnumber of zero elements : " << countnull << endl; */
+ 
+ 
+	/**//*const int rows = 7;
+	const int cols = 3;
+	int array[rows][cols]{};
+	int countnull = 0;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			array[i][j] = -20 + rand() % 40;
+			cout << array[i][j] << " ";
+			if (array[i][j] >= 12)
+			{
+				countnull++;
+			}
+ 
+		}
+		cout << endl;
+	}
+	cout << "\the number of elements whose absolute value is less than 12 : " << countnull << endl;*/
+ 
+	/*const int rows = 4;
+	const int cols = 5;
+	int array[rows][cols]{};
+	int positive_elements = 0;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			array[i][j] = -20 + rand() % 40;
+			cout << array[i][j] << " ";
+			if (array[i][j] > 0 )
+			{
+				positive_elements++;
+			}
+ 
+		}
+		cout << endl;
+	}
+	cout << "\tDetermine the number of positive elements. : " << positive_elements << endl;*/
+ 
+	/*const int rows = 4;
+	const int cols = 5;
+	int array[rows][cols]{};
+	int product = 1;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			array[i][j] = -20 + rand() % 40;
+			cout << array[i][j] << " ";
+			if (array[i][j] > 0)
+			{
+				product= product * array[i][j];
+			}
+ 
+		}
+		cout << endl;
+	}
+	cout << "\tproduct of positive elements. : " << product << endl;*/
+ 
+ 
+//const int rows = 5;
+//const int cols = 4;
+//int array[rows][cols]{};
+//int product = 1;
+//for (int i = 0; i < rows; i++)
+//{
+//	for (int j = 0; j < cols; j++)
+//	{
+//		array[i][j] = -20 + rand() % 40;
+//		cout << array[i][j] << " ";
+//		if (array[i][j] < 0)
+//		{
+//			product = product * array[i][j];
+//		}
+//
+//	}
+//	cout << endl;
+//}
+//cout << "\tproduct of positive elements. : " << product << endl;
+ 
+ 
+/*const int rows = 4;
+const int cols = 4;
+int array[rows][cols]{};
+int num = 1;
+for (int i = 0; i < rows; i++)
+{
+	for (int j = 0; j < cols; j++)
+	{
+		array[i][j] = rand() % 40;
+		cout << array[i][j] << " ";
+		if (array[i][j] %6==1 )
+		{
+			num++;
+		}
+ 
+	}
+	cout << endl;
+}
+cout << "\tthe number of elements that yield a remainder when divided by 6 : " << num << endl;*/
+ 
+//const int rows = 5;
+//const int cols = 6;
+//int array[rows][cols]{};
+//int min_num = 1;
+//for (int i = 0; i < rows; i++)
+//{
+//	for (int j = 0; j < cols; j++)
+//	{
+//		array[i][j] = rand() % 100;
+//		cout << array[i][j] << " ";
+//		if (array[i][j] == 0)
+//		{
+//			min_num= array[i][j];
+//		}
+//
+//	}
+//	cout << endl;
+//}
+//cout << "\tFind the minimum element : " << min_num << endl;
+const int rows = 5;
+const int cols = 6;
+int array[rows][cols]{};
+int max_num = 0;
+for (int i = 0; i < rows; i++)
+{
+	for (int j = 0; j < cols; j++)
+	{
+		array[i][j] = rand() % 100;
+		cout << array[i][j] << " ";
+		if (array[i][j] >max_num )
+		{
+			max_num = array[i][j];
+		}
+ 
+	}
+	cout << endl;
+}
+cout << "\tFind the max element : " << max_num << endl;
+}
