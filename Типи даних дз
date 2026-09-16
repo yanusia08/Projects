@@ -1,0 +1,87 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a, b, c;
+    int summa;
+
+    cout << "Enter a : ";
+    cin >> a;
+
+    cout << "Enter b : ";
+    cin >> b;
+
+    cout << "Enter c : ";
+    cin >> c;
+
+    summa = a + b + c;
+
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+    cout << "c = " << c << endl;
+    cout << "Summa = " << summa << endl;
+
+    return 0;
+}
+{
+    float a, b;
+    float seredne;
+
+    cout << "Enter a : ";
+    cin >> a;
+
+    cout << "Enter b : ";
+    cin >> b;
+
+    seredne = (a + b) / 2;
+
+    cout << "Seredne = " << seredne << endl;
+
+    return 0;
+}
+int main()
+{
+    float km;
+    float meters;
+
+    cout << "Enter kilometers : ";
+    cin >> km;
+
+    meters = km * 1000;
+
+    cout << "Meters = " << meters << endl;
+
+    return 0;
+}
+int main()
+{
+    const float price1 = 25;
+    const float price2 = 40;
+    const float price3 = 15;
+    const float price4 = 60;
+
+    int count1, count2, count3, count4;
+    float summa;
+
+    cout << "Enter count of product 1 : ";
+    cin >> count1;
+
+    cout << "Enter count of product 2 : ";
+    cin >> count2;
+
+    cout << "Enter count of product 3 : ";
+    cin >> count3;
+
+    cout << "Enter count of product 4 : ";
+    cin >> count4;
+
+    summa = price1 * count1 +
+            price2 * count2 +
+            price3 * count3 +
+            price4 * count4;
+
+    cout << "Summa = " << summa << endl;
+
+    return 0;
+}
