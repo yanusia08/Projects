@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+int main()
+// {
+//     int i = 1;
+
+//     while (i <= 100)
+//     {
+//         cout << i << " ";
+//         i++;
+//     }
+
+//     return 0;
+// }
+// {
+//     int i = 2;
+//     int counter = 0;
+
+//     while (i <= 200)
+//     {
+//         cout << i << " ";
+//         counter++;
+//         i += 2;
+//     }
+
+//     cout << endl;
+//     cout << "Count = " << counter << endl;
+
+//     return 0;
+// }
+// {
+//     int N;
+//     int i = 1;
+//     int number;
+//     int summa = 0;
+
+//     cout << "Enter N : ";
+//     cin >> N;
+
+//     while (i <= N)
+//     {
+//         cout << "Enter number : ";
+//         cin >> number;
+
+//         if (number % 2 == 0)
+//         {
+//             summa += number;
+//         }
+
+//         i++;
+//     }
+
+//     cout << "Summa = " << summa << endl;
+
+//     return 0;
+// }
+// int main()
+// {
+//     int summa = 0;
+
+//     for (int i = 1; i <= 12; i++)
+//     {
+//         summa += i;
+//     }
+
+//     cout << "Summa = " << summa << endl;
+
+//     return 0;
+// }
