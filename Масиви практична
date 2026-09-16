@@ -1,0 +1,93 @@
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int size = 10;
+    int arr[size];
+    int product = 1;
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         cout << "Enter number " << i + 1 << "   ---->   ";
+//         cin >> arr[i];
+//     }
+
+//     cout << "Array : ";
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         product *= arr[i];
+//     }
+
+//     cout << "\nProduct elements : " << product << endl;
+// }
+// int main()
+// {
+//     const int size = 7;
+//     int arr[size];
+
+//     int negative = 0;
+//     int positive = 0;
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         arr[i] = rand() % 63 - 12;
+//     }
+
+//     cout << "Array : ";
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         if (arr[i] < 0)
+//         {
+//             negative++;
+//         }
+
+//         if (arr[i] > 0)
+//         {
+//             positive++;
+//         }
+//     }
+
+//     cout << "\nNegative elements : " << negative << endl;
+//     cout << "Positive elements : " << positive << endl;
+// }
+
+// int main()
+// {
+//     const int size = 7;
+
+//     long arr[size] = { 12, 7, 8, 15, 20, 3, 6 };
+
+//     int summa = 0;
+
+//     cout << "Array : ";
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         if (arr[i] % 2 == 0)
+//         {
+//             summa += arr[i];
+//         }
+//     }
+
+//     cout << "\nSumma even elements : " << summa << endl;
+// }
