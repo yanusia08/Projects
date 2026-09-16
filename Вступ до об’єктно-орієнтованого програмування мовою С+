@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+// int main()
+// {
+//     cout << "I\n";
+//     cout << "\tlove\n";
+//     cout << "\t\tyou\n";
+//     cout << "\t\t\tC++!\n";
+
+//     return 0;
+// }
+// int main()
+// {
+//     cout << "\t...:::RESUME:::...\n";
+//     cout << "\n";
+
+//     cout << "Name:\t\tYana\n";
+//     cout << "Surname:\tOhorodnik\n";
+//     cout << "Last name:\tVolodymyrivna\n";
+//     cout << "\n";
+
+//     cout << "Date of birth:\t04.01.2008\n";
+//     cout << "City:\t\tRivne\n";
+//     cout << "Age:\t\t18\n";
+//     cout << "\n";
+
+//     cout << "Hobby:\t\tdance\n";
+//     cout << "::...................................::\n";
+
+//     return 0;
+// }
+// int main()
+// {
+//     cout << "Every\n";
+//     cout << "\thunter\n";
+//     cout << "\t\twants\n";
+//     cout << "\t\t\tto\n";
+//     cout << "\t\t\t\tknow\n";
+//     cout << "\t\t\t\t\twhere\n";
+//     cout << "\t\t\t\t\t\tthe\n";
+//     cout << "\t\t\t\t\t\t\tpheasant\n";
+//     cout << "\t\t\t\t\t\t\t\tis.\n";
+
+//     return 0;
+// }
