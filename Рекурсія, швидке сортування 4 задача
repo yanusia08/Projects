@@ -1,0 +1,60 @@
+
+#include <iostream>
+using namespace std;
+
+void InitArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        arr[i] = rand() % 40 - 20;
+    }
+}
+
+void ShowArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int SumRec(int arr[], int index, int count)
+{
+    if (count == 0)
+    {
+        return 0;
+    }
+
+    return arr[index] + SumRec(arr, index + 1, count - 1);
+}
+
+int FindMin(int arr[], int size, int index = 0, int minIndex = 0)
+{
+    if (index > size - 10)
+    {
+        return minIndex;
+    }
+
+    int sum1 = SumRec(arr, index, 10);
+    int sum2 = SumRec(arr, minIndex, 10);
+
+    if (sum1 < sum2)
+    {
+        minIndex = index;
+    }
+
+    return FindMin(arr, size, index + 1, minIndex);
+}
+
+int main()
+{
+    const int size = 100;
+    int arr[size];
+
+    InitArray(arr, size);
+    ShowArray(arr, size);
+    int pos = FindMin(arr, size);
+    cout << "Position = " << pos << endl;
+    cout << "Minimum suma = " << SumRec(arr, pos, 10) << endl;
+}
