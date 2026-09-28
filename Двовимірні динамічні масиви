@@ -1,0 +1,149 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//void InitArray(int** arr, int rows, int cols)
+//{
+//	for (int i = 0; i < rows; i++)
+//	{
+//		for (int j = 0; j < cols; j++)
+//		{
+//			arr[i][j] = rand() % 90 + 10;
+//		}
+//	}
+//}
+//
+//void ShowArray(int** arr, int rows, int cols)
+//{
+//	for (int i = 0; i < rows; i++)
+//	{
+//		for (int j = 0; j < cols; j++)
+//		{
+//			cout << setw(4) << arr[i][j] << " ";
+//		}
+//		cout << endl;
+//	}
+//	cout << "-----------------------------------" << endl << endl;
+//}
+//
+//void FillRow(int* arr, int cols)
+//{
+//	for (int i = 0; i < cols; i++)
+//	{
+//		arr[i] = rand() % 10;
+//	}
+//}
+//
+//int** AddNewRowBegin(int** arr, int& rows, int cols)
+//{
+//	int** temp = new int* [rows + 1];
+//
+//	temp[0] = new int[cols];
+//	FillRow(temp[0], cols);
+//
+//	for (int i = 0; i < rows; i++)
+//	{
+//		temp[i + 1] = arr[i];
+//	}
+//
+//	delete[]arr;
+//	rows++;
+//	return temp;
+//}
+//
+//int main()
+//{
+//	int rows = 4;
+//	int cols = 5;
+//
+//	int** arr = new int* [rows];
+//
+//	for (int i = 0; i < rows; i++)
+//	{
+//		arr[i] = new int[cols];
+//	}
+//
+//	InitArray(arr, rows, cols);
+//	ShowArray(arr, rows, cols);
+//
+//	arr = AddNewRowBegin(arr, rows, cols);
+//	ShowArray(arr, rows, cols);
+//
+//	for (int i = 0; i < rows; i++)
+//	{
+//		delete[] arr[i];
+//	}
+//	delete[]arr;
+//}
+
+void InitArray(int** arr, int rows, int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = rand() % 90 + 10;
+		}
+	}
+}
+
+void ShowArray(int** arr, int rows, int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << setw(4) << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << "-----------------------------------" << endl << endl;
+}
+
+void FillRow(int* arr, int cols)
+{
+	for (int i = 0; i < cols; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+
+int** DeleteRowBegin(int** arr, int& rows, int& cols)
+{
+	int** temp = new int* [rows - 1];
+
+	for (int i = 0; i < rows - 1; i++)
+	{
+		temp[i] = arr[i + 1];
+	}
+
+	delete[] arr[0];
+	delete[] arr;
+	rows--;
+	return temp;
+}
+
+int main()
+{
+	int rows = 3;
+	int cols = 4;
+
+	int** arr = new int* [rows];
+
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new int[cols];
+	}
+
+	InitArray(arr, rows, cols);
+	ShowArray(arr, rows, cols);
+
+	arr = DeleteRowBegin(arr, rows, cols);
+	ShowArray(arr, rows, cols);
+
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+}
