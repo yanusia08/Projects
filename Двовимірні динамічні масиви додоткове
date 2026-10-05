@@ -1,0 +1,119 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void InitArray(int** arr, int rows, int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = rand() % 90 + 10;
+		}
+	}
+}
+
+void ShowArray(int** arr, int rows, int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << setw(4) << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << "-----------------------------------" << endl << endl;
+}
+
+/*
+int** AddColumnByPosition(int** arr, int rows, int& cols, int pos)
+{
+	int** temp = new int* [rows];
+
+	for (int i = 0; i < rows; i++)
+	{
+		temp[i] = new int[cols + 1];
+
+		for (int j = 0; j < pos; j++)
+		{
+			temp[i][j] = arr[i][j];
+		}
+
+		temp[i][pos] = 5;
+
+		for (int j = pos; j < cols; j++)
+		{
+			temp[i][j + 1] = arr[i][j];
+		}
+	}
+
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+
+	delete[] arr;
+
+	cols++;
+
+	return temp;
+}
+*/
+
+int** DeleteColumnByPosition(int** arr, int rows, int& cols, int pos)
+{
+	int** temp = new int* [rows];
+
+	for (int i = 0; i < rows; i++)
+	{
+		temp[i] = new int[cols - 1];
+
+		for (int j = 0; j < pos; j++)
+		{
+			temp[i][j] = arr[i][j];
+		}
+
+		for (int j = pos; j < cols - 1; j++)
+		{
+			temp[i][j] = arr[i][j + 1];
+		}
+	}
+
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+
+	delete[] arr;
+
+	cols--;
+
+	return temp;
+}
+
+int main()
+{
+	int rows = 4;
+	int cols = 5;
+
+	int** arr = new int* [rows];
+
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new int[cols];
+	}
+
+	InitArray(arr, rows, cols);
+	ShowArray(arr, rows, cols);
+
+	arr = DeleteColumnByPosition(arr, rows, cols, 2);
+	ShowArray(arr, rows, cols);
+
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+
+	delete[] arr;
+}
