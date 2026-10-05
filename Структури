@@ -1,0 +1,102 @@
+#include <iostream>
+using namespace std;
+
+/*
+struct WashingMachine
+{
+	char firm[20];
+	char color[20];
+	float width;
+	float length;
+	float height;
+	int power;
+	int spin_speed;
+	int temperature;
+};
+
+struct Iron
+{
+	char firm[20];
+	char model[20];
+	char color[20];
+	int min_temperature;
+	int max_temperature;
+	bool steam;
+	int power;
+};
+*/
+
+struct Boiler
+{
+	char firm[20];
+	char color[20];
+	int power;
+	int volume;
+	int temperature;
+};
+
+int main()
+{
+	/*
+	WashingMachine washing_machine =
+	{
+		"Philips",
+		"White",
+		60,
+		55,
+		85,
+		2000,
+		1200,
+		90
+	};
+
+	cout << "------------ Washing Machine -----------------" << endl;
+	cout << "Firm : " << washing_machine.firm << endl;
+	cout << "Color : " << washing_machine.color << endl;
+	cout << "Width : " << washing_machine.width << endl;
+	cout << "Length : " << washing_machine.length << endl;
+	cout << "Height : " << washing_machine.height << endl;
+	cout << "Power : " << washing_machine.power << endl;
+	cout << "Spin speed : " << washing_machine.spin_speed << endl;
+	cout << "Temperature : " << washing_machine.temperature << endl;
+
+
+	cout << "------------ Iron -----------------" << endl;
+
+	Iron iron =
+	{
+		"Philips",
+		"GC5039",
+		"Blue",
+		80,
+		240,
+		true,
+		3000
+	};
+
+	cout << "Firm : " << iron.firm << endl;
+	cout << "Model : " << iron.model << endl;
+	cout << "Color : " << iron.color << endl;
+	cout << "Min temperature : " << iron.min_temperature << endl;
+	cout << "Max temperature : " << iron.max_temperature << endl;
+	cout << "Steam : " << iron.steam << endl;
+	cout << "Power : " << iron.power << endl;
+	*/
+
+	cout << "------------ Boiler -----------------" << endl;
+
+	Boiler boiler =
+	{
+		"Philips",
+		"White",
+		1500,
+		80,
+		75
+	};
+
+	cout << "Firm : " << boiler.firm << endl;
+	cout << "Color : " << boiler.color << endl;
+	cout << "Power : " << boiler.power << endl;
+	cout << "Volume : " << boiler.volume << endl;
+	cout << "Temperature : " << boiler.temperature << endl;
+}
