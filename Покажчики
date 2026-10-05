@@ -1,0 +1,200 @@
+#include <iostream>
+using namespace std;
+
+/*
+int main()
+{
+	int a = 5;
+	int b = 8;
+	int c = 12;
+
+	int* pa = &a;
+	int* pb = &b;
+	int* pc = &c;
+
+	int dob = (*pa) * (*pb) * (*pc);
+	float ser = (float)(*pa + *pb + *pc) / 3;
+
+	int min = *pa;
+
+	if (*pb < min)
+	{
+		min = *pb;
+	}
+
+	if (*pc < min)
+	{
+		min = *pc;
+	}
+
+	cout << "Dobutok = " << dob << endl;
+	cout << "Seredne = " << ser << endl;
+	cout << "Min = " << min << endl;
+}
+*/
+
+/*
+void InitArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		*(arr + i) = rand() % 50;
+	}
+}
+
+void ShowArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << *(arr + i) << " ";
+	}
+	cout << endl;
+}
+
+int SumArray(int* arr, int size)
+{
+	int sum = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		sum += *(arr + i);
+	}
+
+	return sum;
+}
+
+void ShowReverse(int* arr, int size)
+{
+	int* p = arr + size - 1;
+
+	for (int i = 0; i < size; i++)
+	{
+		cout << *p << " ";
+		p--;
+	}
+
+	cout << endl;
+}
+
+int main()
+{
+	const int size = 10;
+	int arr[size];
+
+	InitArray(arr, size);
+
+	ShowArray(arr, size);
+	ShowReverse(arr, size);
+
+	cout << "Sum = " << SumArray(arr, size) << endl;
+}
+*/
+
+/*
+void InitArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		*(arr + i) = rand() % 50;
+	}
+}
+
+void ShowArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << *(arr + i) << " ";
+	}
+	cout << endl;
+}
+
+int* MaxElement(int* arr, int size)
+{
+	int* max = arr;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (*(arr + i) > *max)
+		{
+			max = arr + i;
+		}
+	}
+
+	return max;
+}
+
+int* MinElement(int* arr, int size)
+{
+	int* min = arr;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (*(arr + i) < *min)
+		{
+			min = arr + i;
+		}
+	}
+
+	return min;
+}
+
+int main()
+{
+	const int size = 10;
+	int arr[size];
+
+	InitArray(arr, size);
+	ShowArray(arr, size);
+
+	int* max = MaxElement(arr, size);
+	int* min = MinElement(arr, size);
+
+	int temp = *max;
+	*max = *min;
+	*min = temp;
+
+	ShowArray(arr, size);
+}
+*/
+
+void InitArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		*(arr + i) = rand() % 50;
+	}
+}
+
+void ShowArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << *(arr + i) << " ";
+	}
+	cout << endl;
+}
+
+void Change(int* arr, int size)
+{
+	int temp;
+
+	for (int i = 0; i < size - 1; i += 2)
+	{
+		temp = *(arr + i);
+		*(arr + i) = *(arr + i + 1);
+		*(arr + i + 1) = temp;
+	}
+}
+
+int main()
+{
+	const int size = 10;
+	int arr[size];
+
+	InitArray(arr, size);
+	ShowArray(arr, size);
+
+	Change(arr, size);
+
+	ShowArray(arr, size);
+}
