@@ -1,0 +1,164 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+int main()
+{
+	int* pa = new int(5);
+	double* pb = new double(2.5);
+	float* pc = new float(3.5);
+
+	cout << "*pa = " << *pa << endl;
+	cout << "*pb = " << *pb << endl;
+	cout << "*pc = " << *pc << endl;
+
+	cout << "Dobutok = " << *pa * *pb * *pc << endl;
+
+	delete pa;
+	delete pb;
+	delete pc;
+
+	cout << "-----------------------------------------" << endl;
+
+	int size = 5;
+	int* arr = new int[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 100;
+	}
+
+	cout << "Array: ";
+
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << " ";
+	}
+
+	cout << endl;
+
+	int choice;
+	int number;
+	int index;
+
+	while (true)
+	{
+		cout << endl;
+		cout << "1 - Add element" << endl;
+		cout << "2 - Delete last element" << endl;
+		cout << "3 - Delete element" << endl;
+		cout << "4 - Insert element" << endl;
+		cout << "5 - Show array" << endl;
+		cout << "0 - Exit" << endl;
+		cout << "Enter choice: ";
+		cin >> choice;
+
+		if (choice == 0)
+		{
+			break;
+		}
+
+		if (choice == 1)
+		{
+			cout << "Enter number: ";
+			cin >> number;
+
+			int* temp = new int[size + 1];
+
+			for (int i = 0; i < size; i++)
+			{
+				temp[i] = arr[i];
+			}
+
+			temp[size] = number;
+
+			delete[] arr;
+			arr = temp;
+			size++;
+		}
+
+		if (choice == 2)
+		{
+			if (size > 0)
+			{
+				int* temp = new int[size - 1];
+
+				for (int i = 0; i < size - 1; i++)
+				{
+					temp[i] = arr[i];
+				}
+
+				delete[] arr;
+				arr = temp;
+				size--;
+			}
+		}
+
+		if (choice == 3)
+		{
+			cout << "Enter index: ";
+			cin >> index;
+
+			if (index >= 0 && index < size)
+			{
+				int* temp = new int[size - 1];
+
+				for (int i = 0; i < index; i++)
+				{
+					temp[i] = arr[i];
+				}
+
+				for (int i = index; i < size - 1; i++)
+				{
+					temp[i] = arr[i + 1];
+				}
+
+				delete[] arr;
+				arr = temp;
+				size--;
+			}
+		}
+
+		if (choice == 4)
+		{
+			cout << "Enter index: ";
+			cin >> index;
+
+			cout << "Enter number: ";
+			cin >> number;
+
+			if (index >= 0 && index <= size)
+			{
+				int* temp = new int[size + 1];
+
+				for (int i = 0; i < index; i++)
+				{
+					temp[i] = arr[i];
+				}
+
+				temp[index] = number;
+
+				for (int i = index; i < size; i++)
+				{
+					temp[i + 1] = arr[i];
+				}
+
+				delete[] arr;
+				arr = temp;
+				size++;
+			}
+		}
+
+		if (choice == 5)
+		{
+			for (int i = 0; i < size; i++)
+			{
+				cout << arr[i] << " ";
+			}
+
+			cout << endl;
+		}
+	}
+
+	delete[] arr;
+}
