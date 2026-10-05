@@ -1,0 +1,183 @@
+
+
+#include <iostream>
+#include <conio.h>
+#include <string>
+using namespace std;
+
+
+
+struct Book
+{
+	int id;
+	char title[50];
+	char author[50];
+	char publisher[50];
+	char genre[50];
+	int year_publication;
+	float price;
+};
+void Show(Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Book " << books[i].id << endl;
+		cout << "Name: " << books[i].title << endl;
+		cout << "Author: " << books[i].author << endl;
+		cout << "Publisher: " << books[i].publisher << endl;
+		cout << "Genre: " << books[i].genre << endl;
+		cout << "Year: " << books[i].year_publication << endl;
+		cout << "Price: " << books[i].price << endl;
+
+	}
+}
+void ShowOneBook(Book book)
+{
+	cout << "Book " << book.id << endl;
+	cout << "Name: " << book.title << endl;
+	cout << "Author: " << book.author << endl;
+	cout << "Publisher: " << book.publisher << endl;
+	cout << "Genre: " << book.genre << endl;
+	cout << "Year: " << book.year_publication << endl;
+	cout << "Price: " << book.price << endl;
+}
+void SearchByAuthor(char author[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].author, author) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+
+}
+void SearchByTitlee(char title[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].title, title) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+}
+void SearchByPublisher(char publisher[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].publisher, publisher) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+};
+void SearchByGenre(char genre[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].genre, genre) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+}
+void ChangeData(Book* books, int size, int id)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (books[i].id == id)
+		{
+			ShowOneBook(books[i]);
+			cout << "Enter new price : ";
+			cin >> books[i].price;
+
+		}
+	}
+}
+int main()
+{
+	int choice;
+	char title[50];
+	int size = 10;
+	Book* books = new Book[size]{
+
+	{ 0, "The Great Gatsby", "F. Scott Fitzgerald", "Penguin", "Classic", 1925, 20.0 },
+	{ 1, "1984", "George Orwell", "Secker", "Sci-Fi", 1949, 15.5 },
+	{ 2, "The Hobbit", "J.R.R. Tolkien", "Allen", "Fantasy", 1937, 18.0 },
+	{ 3, "Dune", "Frank Herbert", "Chilton", "Sci-Fi", 1965, 25.0 },
+	{ 4, "The Alchemist", "Paulo Coelho", "Harper", "Adventure", 1988, 12.0 },
+	{ 5, "Pride and Prejudice", "Jane Austen", "Egerton", "Romance", 1813, 14.0 },
+	{ 6, "The Martian", "Andy Weir", "Crown", "Sci-Fi", 2011, 22.0 },
+	{ 7, "To Kill a Mockingbird", "Harper Lee", "Lippincott", "Fiction", 1960, 16.5 },
+	{ 8, "The Little Prince", "Antoine de Saint-Exupery", "Reynal", "Fable", 1943, 10.0 },
+	{ 9, "Fahrenheit 451", "Ray Bradbury", "Ballantine", "Sci-Fi", 1953, 17.5 }
+	};
+
+	do
+	{
+		system("cls");
+		cout << "-------------- Menu -----------------" << endl;
+		cout << "Show all books           [1]" << endl;
+		cout << "Search by author         [2]" << endl;
+		cout << "Search by name           [3]" << endl;
+		cout << "Search by publisher      [4]" << endl;
+		cout << "Search by genre          [5]" << endl;
+		cout << "Change data about book   [6]" << endl;
+		cout << "Exit                     [0]" << endl;
+		cin >> choice;
+		cin.ignore();
+		switch (choice)
+		{
+		case 0:
+			cout << "Have a nice day! Goodbye!!!!" << endl;
+			break;
+		case 1:
+
+			for (int i = 0; i < size; i++)
+
+			{
+
+				ShowOneBook(books[i]);
+
+			}
+			break;
+		case 2:
+			cout << "Enter book's author : ";
+			cin.getline(title, 50);
+			SearchByAuthor(title, books, size);
+			break;
+		case 3:
+			cout << "Enter book's title : ";
+			cin.getline(title, 50);
+			SearchByTitlee(title, books, size);
+			break;
+		case 4:
+			cout << "Enter book's publisher : ";
+			cin.getline(title, 50);
+			SearchByPublisher(title, books, size);
+			break;
+		case 5:
+			cout << "Enter book's genre : ";
+			cin.getline(title, 50);
+			SearchByGenre(title, books, size);
+			break;
+		case 6:
+		{
+			int id;
+			cout << "Enter book's id : ";
+			cin >> id;
+			ChangeData(books, size, id);
+			break;
+		}
+		default:
+			cout << "Error choice " << endl;
+			break;
+		}
+		if (choice != 0)
+		{
+			cout << "Press any key to continue...";
+			_getch();
+		}
+	} while (choice != 0);
+}
