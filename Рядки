@@ -1,0 +1,105 @@
+#include <iostream>
+#include <iomanip>
+#include <Windows.h>
+using namespace std;
+
+/*
+int main()
+{
+	char text[255];
+
+	cout << "Enter text : ";
+	cin.getline(text, 255);
+
+	int a = 0;
+	int o = 0;
+
+	for (int i = 0; text[i] != '\0'; i++)
+	{
+		if (text[i] == 'a' || text[i] == 'A')
+		{
+			a++;
+		}
+
+		if (text[i] == 'o' || text[i] == 'O')
+		{
+			o++;
+		}
+	}
+
+	if (a > o)
+	{
+		cout << "a > o" << endl;
+	}
+	else if (o > a)
+	{
+		cout << "o > a" << endl;
+	}
+	else
+	{
+		cout << "a = o" << endl;
+	}
+
+	int letters = 0;
+	int numbers = 0;
+	int spaces = 0;
+
+	for (int i = 0; text[i] != '\0'; i++)
+	{
+		if (isalpha(text[i]))
+		{
+			letters++;
+		}
+
+		if (isdigit(text[i]))
+		{
+			numbers++;
+		}
+
+		if (isspace(text[i]))
+		{
+			spaces++;
+		}
+	}
+
+	cout << "Letters = " << letters << endl;
+	cout << "Numbers = " << numbers << endl;
+	cout << "Spaces = " << spaces << endl;
+
+	for (int i = 0; text[i] != '\0'; i++)
+	{
+		if (isupper(text[i]))
+		{
+			text[i] = tolower(text[i]);
+		}
+		else if (islower(text[i]))
+		{
+			text[i] = toupper(text[i]);
+		}
+	}
+
+	cout << text << endl;
+}
+*/
+
+int Length(char arr[])
+{
+	int i = 0;
+
+	while (arr[i] != '\0')
+	{
+		i++;
+	}
+
+	return i;
+}
+
+int main()
+{
+	char text[255];
+
+	cout << "Enter text : ";
+	cin.getline(text, 255);
+
+	cout << "Length = " << Length(text) << endl;
+}
