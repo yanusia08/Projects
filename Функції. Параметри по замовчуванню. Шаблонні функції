@@ -1,0 +1,320 @@
+#include <iostream>
+using namespace std;
+
+int Max(int a, int b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+
+float Max(float a, float b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+
+int Max(int a, int b, int c)
+{
+    int max = a;
+
+    if (b > max)
+    {
+        max = b;
+    }
+
+    if (c > max)
+    {
+        max = c;
+    }
+
+    return max;
+}
+
+int Min(int a, int b)
+{
+    if (a < b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+
+int Min(int a, int b, int c)
+{
+    int min = a;
+
+    if (b < min)
+    {
+        min = b;
+    }
+
+    if (c < min)
+    {
+        min = c;
+    }
+
+    return min;
+}
+
+template <typename T>
+float Average(T arr[], int size)
+{
+    T sum = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        sum = sum + arr[i];
+    }
+
+    return (float)sum / size;
+}
+
+template <typename T>
+T MaxArray(T arr[], int size)
+{
+    T max = arr[0];
+
+    for (int i = 1; i < size; i++)
+    {
+        if (arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+template <typename T>
+T MaxMatrix(T arr[][3], int size)
+{
+    T max = arr[0][0];
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (arr[i][j] > max)
+            {
+                max = arr[i][j];
+            }
+        }
+    }
+
+    return max;
+}
+
+void InitMatrix(int arr[][3], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            cin >> arr[i][j];
+        }
+    }
+}
+
+void InitMatrix(double arr[][3], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            cin >> arr[i][j];
+        }
+    }
+}
+
+void InitMatrix(char arr[][3], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            cin >> arr[i][j];
+        }
+    }
+}
+
+void PrintMatrix(int arr[][3], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+
+        cout << endl;
+    }
+}
+
+void PrintMatrix(double arr[][3], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+
+        cout << endl;
+    }
+}
+
+void PrintMatrix(char arr[][3], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+
+        cout << endl;
+    }
+}
+
+void Diagonal(int arr[][3], int size)
+{
+    int max = arr[0][0];
+    int min = arr[0][0];
+
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i][i] > max)
+        {
+            max = arr[i][i];
+        }
+
+        if (arr[i][i] < min)
+        {
+            min = arr[i][i];
+        }
+    }
+
+    cout << "Max = " << max << endl;
+    cout << "Min = " << min << endl;
+}
+
+void Diagonal(double arr[][3], int size)
+{
+    double max = arr[0][0];
+    double min = arr[0][0];
+
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i][i] > max)
+        {
+            max = arr[i][i];
+        }
+
+        if (arr[i][i] < min)
+        {
+            min = arr[i][i];
+        }
+    }
+
+    cout << "Max = " << max << endl;
+    cout << "Min = " << min << endl;
+}
+
+void Diagonal(char arr[][3], int size)
+{
+    char max = arr[0][0];
+    char min = arr[0][0];
+
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i][i] > max)
+        {
+            max = arr[i][i];
+        }
+
+        if (arr[i][i] < min)
+        {
+            min = arr[i][i];
+        }
+    }
+
+    cout << "Max = " << max << endl;
+    cout << "Min = " << min << endl;
+}
+
+int main()
+{
+    int a = 10, b = 20, c = 15;
+    float x = 10.5, y = 20.5;
+
+    cout << "Max = " << Max(a, b) << endl;
+    cout << "Max = " << Max(x, y) << endl;
+    cout << "Max = " << Max(a, b, c) << endl;
+
+    cout << "Min = " << Min(a, b) << endl;
+    cout << "Min = " << Min(a, b, c) << endl;
+
+    cout << "-----------------------------------------" << endl;
+
+    int arr1[5] = { 10, 20, 30, 40, 50 };
+
+    cout << "Average = " << Average(arr1, 5) << endl;
+
+    cout << "-----------------------------------------" << endl;
+
+    int arr2[5] = { 12, 45, 7, 89, 23 };
+
+    cout << "Max array = " << MaxArray(arr2, 5) << endl;
+
+    cout << "-----------------------------------------" << endl;
+
+    int arr3[3][3] =
+    {
+        { 10, 20, 30 },
+        { 40, 50, 60 },
+        { 70, 80, 90 }
+    };
+
+    cout << "Max matrix = " << MaxMatrix(arr3, 3) << endl;
+
+    cout << "-----------------------------------------" << endl;
+
+    int matrix1[3][3];
+
+    InitMatrix(matrix1, 3);
+    PrintMatrix(matrix1, 3);
+    Diagonal(matrix1, 3);
+
+    cout << "-----------------------------------------" << endl;
+
+    double matrix2[3][3];
+
+    InitMatrix(matrix2, 3);
+    PrintMatrix(matrix2, 3);
+    Diagonal(matrix2, 3);
+
+    cout << "-----------------------------------------" << endl;
+
+    char matrix3[3][3];
+
+    InitMatrix(matrix3, 3);
+    PrintMatrix(matrix3, 3);
+    Diagonal(matrix3, 3);
+
+    return 0;
+}
