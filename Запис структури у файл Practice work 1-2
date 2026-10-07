@@ -1,0 +1,288 @@
+
+
+#include <iostream>
+#include <fstream>
+#include <conio.h>
+#include <cstring>
+using namespace std;
+
+//struct Book{};
+//struct Human {
+//    char name[50];
+//    char surname[50];
+//    int age;
+//};
+//void Show(Human h)
+//{
+//    <
+//        cout << "NAME :" << h.name<< 
+//}
+//int main()
+//{
+//    /*Book book;
+//    ofstream out("text.txt", ios_base::out);
+//    if (out.is_open())
+//    {
+//        out << "Hello world" << endl;
+//        cout << "Save to file" << endl;
+//
+//    }
+//    out.close();
+//
+//    ifstream in("text.txt", ios_base::in);
+//    char buff[250];
+//    while (!in.eof())
+//    /*in >> buff;*/
+//    /*cout << buff << endl; */
+//}
+
+
+
+
+const char* filename = "BooksDatabase.txt";
+
+struct Book
+{
+	int id;
+	char title[50];
+	char author[50];
+	char publisher[50];
+	char genre[50];
+	int year_publication;
+	float price;
+
+	void SaveToFile()
+	{
+		ofstream out(filename, ios_base::app);
+		out << id << ':';
+		out << title << ':';
+		out << author << ':';
+		out << publisher << ':';
+		out << genre << ':';
+		out << year_publication << ':';
+		out << price << '|';
+		out.close();
+	}
+
+	void CopyFromFile(int idF, char* titleF, char* authorF, char* publisherF, char* genreF, int yearF, float priceF)
+	{
+		id = idF;
+		strcpy(title, titleF);
+		strcpy(author, authorF);
+		strcpy(publisher, publisherF);
+		strcpy(genre, genreF);
+		year_publication = yearF;
+		price = priceF;
+	}
+};
+
+void Show(Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Book " << books[i].id << endl;
+		cout << "Name: " << books[i].title << endl;
+		cout << "Author: " << books[i].author << endl;
+		cout << "Publisher: " << books[i].publisher << endl;
+		cout << "Genre: " << books[i].genre << endl;
+		cout << "Year: " << books[i].year_publication << endl;
+		cout << "Price: " << books[i].price << endl;
+	}
+}
+
+void ShowOneBook(Book book)
+{
+	cout << "Book " << book.id << endl;
+	cout << "Name: " << book.title << endl;
+	cout << "Author: " << book.author << endl;
+	cout << "Publisher: " << book.publisher << endl;
+	cout << "Genre: " << book.genre << endl;
+	cout << "Year: " << book.year_publication << endl;
+	cout << "Price: " << book.price << endl;
+}
+
+void SearchByAuthor(char author[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].author, author) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+}
+
+void SearchByTitlee(char title[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].title, title) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+}
+
+void SearchByPublisher(char publisher[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].publisher, publisher) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+}
+
+void SearchByGenre(char genre[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].genre, genre) == 0)
+		{
+			ShowOneBook(books[i]);
+		}
+	}
+}
+
+void ChangeData(Book* books, int size, int id)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (books[i].id == id)
+		{
+			ShowOneBook(books[i]);
+			cout << "Enter new price : ";
+			cin >> books[i].price;
+		}
+	}
+}
+
+int main()
+{
+	int choice;
+	char title[50];
+	int size = 10;
+	//Book* books = new Book[size]{
+	//	{ 0, "The Great Gatsby", "F. Scott Fitzgerald", "Penguin", "Classic", 1925, 20.0f },
+	//	{ 1, "1984", "George Orwell", "Secker", "Sci-Fi", 1949, 15.5f },
+	//	{ 2, "The Hobbit", "J.R.R. Tolkien", "Allen", "Fantasy", 1937, 18.0f },
+	//	{ 3, "Dune", "Frank Herbert", "Chilton", "Sci-Fi", 1965, 25.0f },
+	//	{ 4, "The Alchemist", "Paulo Coelho", "Harper", "Adventure", 1988, 12.0f },
+	//	{ 5, "Pride and Prejudice", "Jane Austen", "Egerton", "Romance", 1813, 14.0f },
+	//	{ 6, "The Martian", "Andy Weir", "Crown", "Sci-Fi", 2011, 22.0f },
+	//	{ 7, "To Kill a Mockingbird", "Harper Lee", "Lippincott", "Fiction", 1960, 16.5f },
+	//	{ 8, "The Little Prince", "Antoine de Saint-Exupery", "Reynal", "Fable", 1943, 10.0f },
+	//	{ 9, "Fahrenheit 451", "Ray Bradbury", "Ballantine", "Sci-Fi", 1953, 17.5f }
+	//};
+
+	//ofstream out(filename, ios_base::out);
+	//out.close();
+	//for (int i = 0; i < size; i++)
+	//{
+	//	books[i].SaveToFile();
+	//}
+
+	ifstream in(filename, ios_base::in);
+	char buff_id[250], buff_title[250], buff_author[250], buff_publisher[250], buff_genre[250], buff_year[250], buff_price[250];
+
+	int new_size = 0;
+	Book* books = new Book[new_size];
+
+	while (!in.eof())
+	{
+		in.getline(buff_id, 250, ':');
+		if (in.eof()) break;
+		in.getline(buff_title, 250, ':');
+		in.getline(buff_author, 250, ':');
+		in.getline(buff_publisher, 250, ':');
+		in.getline(buff_genre, 250, ':');
+		in.getline(buff_year, 250, ':');
+		in.getline(buff_price, 250, '|');
+
+		int id = atoi(buff_id);
+		int year = atoi(buff_year);
+		float price = (float)atof(buff_price);
+
+		Book readBook;
+		readBook.CopyFromFile(id, buff_title, buff_author, buff_publisher, buff_genre, year, price);
+
+		Book* temp = new Book[new_size + 1];
+		for (int i = 0; i < new_size; i++)
+		{
+			temp[i] = books[i];
+		}
+		temp[new_size] = readBook;
+		delete[]books;
+		new_size++;
+		books = temp;
+	}
+	in.close();
+
+	do
+	{
+		system("cls");
+		cout << "-------------- Menu -----------------" << endl;
+		cout << "Show all books           [1]" << endl;
+		cout << "Search by author         [2]" << endl;
+		cout << "Search by name           [3]" << endl;
+		cout << "Search by publisher      [4]" << endl;
+		cout << "Search by genre          [5]" << endl;
+		cout << "Change data about book   [6]" << endl;
+		cout << "Exit                     [0]" << endl;
+		cin >> choice;
+		cin.ignore();
+		switch (choice)
+		{
+		case 0:
+			cout << "Have a nice day! Goodbye!!!!" << endl;
+			break;
+		case 1:
+			for (int i = 0; i < size; i++)
+			{
+				ShowOneBook(books[i]);
+			}
+			break;
+		case 2:
+			cout << "Enter book's author : ";
+			cin.getline(title, 50);
+			SearchByAuthor(title, books, size);
+			break;
+		case 3:
+			cout << "Enter book's title : ";
+			cin.getline(title, 50);
+			SearchByTitlee(title, books, size);
+			break;
+		case 4:
+			cout << "Enter book's publisher : ";
+			cin.getline(title, 50);
+			SearchByPublisher(title, books, size);
+			break;
+		case 5:
+			cout << "Enter book's genre : ";
+			cin.getline(title, 50);
+			SearchByGenre(title, books, size);
+			break;
+		case 6:
+		{
+			int id;
+			cout << "Enter book's id : ";
+			cin >> id;
+			ChangeData(books, size, id);
+			break;
+		}
+		default:
+			cout << "Error choice " << endl;
+			break;
+		}
+		if (choice != 0)
+		{
+			cout << "Press any key to continue...";
+			_getch();
+		}
+	} while (choice != 0);
+
+	delete[] books;
+	delete[] loaded_books;
+	return 0;
+}
