@@ -1,0 +1,207 @@
+#include <iostream>
+#include <conio.h>
+#include <fstream>
+#include <cstring>
+using namespace std;
+
+struct Book
+{
+	int id;
+	char name[50];
+	char author[50];
+	char genre[50];
+	float stars;
+	float price;
+};
+
+void ShowBook(Book &book)
+{
+	cout << "Id : " << book.id << endl;
+	cout << "Name : " << book.name << endl;
+	cout << "Author : " << book.author << endl;
+	cout << "Genre : " << book.genre << endl;
+	cout << "Stars : " << book.stars << endl;
+	cout << "Price : $" << book.price << endl << endl;
+}
+
+void SearchByName(char name[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].name, name) == 0)
+		{
+			ShowBook(books[i]);
+		}
+	}
+}
+
+void SearchByAuthor(char author[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].author, author) == 0)
+		{
+			ShowBook(books[i]);
+		}
+	}
+}
+
+void SearchByGenre(char genre[], Book* books, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].genre, genre) == 0)
+		{
+			ShowBook(books[i]);
+		}
+	}
+}
+
+void SearchMostPopularByGenre(char genre[], Book* books, int size)
+{
+	float max = 0;
+	int max_index = 0;
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(books[i].genre, genre) == 0)
+		{
+			if (books[i].stars > max)
+			{
+				max = books[i].stars;
+				max_index = i;
+			}
+		}
+	}
+	ShowBook(books[max_index]);
+}
+
+void ChangeBook(Book* books, int size, int id)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (books[i].id == id) {
+			ShowBook(books[i]);
+			cout << "Enter new rating : ";
+			cin >> books[i].stars;
+			cout << "Enter new price : ";
+			cin >> books[i].price;
+		}
+	}
+}
+
+void SaveToFile(Book* books, int size)
+{
+	ofstream file("books.bin", ios::binary);
+	if (!file.is_open())
+	{
+		cout << "Error opening file!" << endl;
+		return;
+	}
+	file.write((char*)&size, sizeof(size));
+	file.write((char*)books, sizeof(Book) * size);
+	file.close();
+	cout << "Saved to file!" << endl;
+}
+
+void LoadFromFile(Book*& books, int& size)
+{
+	ifstream file("books.bin", ios::binary);
+	if (!file.is_open())
+	{
+		cout << "Error opening file!" << endl;
+		return;
+	}
+	file.read((char*)&size, sizeof(size));
+	delete[] books;
+	books = new Book[size];
+	file.read((char*)books, sizeof(Book) * size);
+	file.close();
+	cout << "Loaded from file!" << endl;
+}
+
+int main()
+{
+	int choice;
+	char name[50];
+
+	int size = 6;
+	Book* books = new Book[size]{
+		{0, "Harry Potter", "J.K. Rowling", "Fantasy", 9.1, 15.99},
+		{1, "Dune", "Frank Herbert", "Sci-Fi", 8.9, 20.0},
+		{2, "1984", "George Orwell", "Dystopian", 9.0, 14.50},
+		{3, "The Hobbit", "J.R.R. Tolkien", "Fantasy", 9.2, 18.0},
+		{4, "The Godfather", "Mario Puzo", "Crime", 8.8, 16.0},
+		{5, "Sherlock Holmes", "Arthur Conan Doyle", "Detective", 9.3, 19.50}
+	};
+
+	do
+	{
+		system("cls");
+		cout << "-------------- Menu -----------------" << endl;
+		cout << "Show all books           [1]" << endl;
+		cout << "Search by name           [2]" << endl;
+		cout << "Search by author         [3]" << endl;
+		cout << "Search by genre          [4]" << endl;
+		cout << "Most popular book        [5]" << endl;
+		cout << "Change info about book   [6]" << endl;
+		cout << "Save to file             [7]" << endl;
+		cout << "Load from file           [8]" << endl;
+		cout << "Exit                     [0]" << endl;
+		cin >> choice;
+		cin.ignore();
+		switch (choice)
+		{
+		case 0:
+			cout << "Have a nice day! Goodbye!!!!" << endl;
+			break;
+		case 1:
+			for (int i = 0; i < size; i++)
+			{
+				ShowBook(books[i]);
+			}
+			break;
+		case 2:
+			cout << "Enter book name : ";
+			cin.getline(name, 50);
+			SearchByName(name, books, size);
+			break;
+		case 3:
+			cout << "Enter book's author : ";
+			cin.getline(name, 50);
+			SearchByAuthor(name, books, size);
+			break;
+		case 4:
+			cout << "Enter book's genre : ";
+			cin.getline(name, 50);
+			SearchByGenre(name, books, size);
+			break;
+		case 5:
+			cout << "Enter book's genre : ";
+			cin.getline(name, 50);
+			SearchMostPopularByGenre(name, books, size);
+			break;
+		case 6:
+			int id;
+			cout << "Enter book's id : ";
+			cin >> id;
+			ChangeBook(books, size, id);
+			break;
+		case 7:
+			SaveToFile(books, size);
+			break;
+		case 8:
+			LoadFromFile(books, size);
+			break;
+		default:
+			cout << "Error choice " << endl;
+			break;
+		}
+		if (choice != 0) {
+			cout << "Press any key to continue...";
+			_getch();
+		}
+
+	} while (choice != 0);
+
+	delete[] books;
+}
